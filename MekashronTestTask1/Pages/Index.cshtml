@@ -1,0 +1,145 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6">
+                <div class="card shadow-sm">
+                    <div class="card-body p-4">
+                        <h2 class="fw-bolder mb-4">Sign In</h2>
+                        <form method="post">
+                            <div class="mb-3">
+                                <label for="Input_Username" class="fw-medium form-label text-start d-block">Username</label>
+                                <input type="text" class="form-control" id="Input_Username" name="Input.Username" value="@Model.Input?.Username" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="Input_Password" class="fw-medium form-label text-start d-block">Password</label>
+                                <input type="password" class="form-control" id="Input_Password" name="Input.Password" required>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary">Sign In</button>
+                            </div>
+                        </form>
+
+                        <div asp-validation-summary="ModelOnly" class="text-danger mt-3"></div>
+
+                        @if (Model.ResponseStatus == Models.ResponseStatus.Success)
+                        {
+                            <div class="alert alert-success mt-4">
+                                <div class="fw-bold">Successful login!</div>
+                                <div>Greetings, @Model.CustomerInfoResponse!.FirstName</div>
+                            </div>
+                        }
+
+                        @if (Model.ResponseStatus == Models.ResponseStatus.Error)
+                        {
+                            <div class="alert alert-danger mt-4">
+                                @(Model.CustomerInfoResponse?.ResultMessage)
+                            </div>
+                        }
+                        @if (Model.ResponseStatus == Models.ResponseStatus.InternalError)
+                        {
+                            <div class="alert alert-danger mt-4">
+                                Internal server error. Please, try later
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            @if (Model.ResponseStatus == Models.ResponseStatus.Success)
+            {
+                <div class="table-responsive mt-4">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Field</th>
+                                <th scope="col">Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Email</th>
+                                <td>@Model.CustomerInfoResponse!.Email</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">First Name</th>
+                                <td>@Model.CustomerInfoResponse.FirstName</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Last Name</th>
+                                <td>@Model.CustomerInfoResponse.LastName</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Status</th>
+                                <td>@Model.CustomerInfoResponse.Status</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Entity ID</th>
+                                <td>@Model.CustomerInfoResponse.EntityId</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Company</th>
+                                <td>@Model.CustomerInfoResponse.Company</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Address</th>
+                                <td>@Model.CustomerInfoResponse.Address</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">City</th>
+                                <td>@Model.CustomerInfoResponse.City</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Country</th>
+                                <td>@Model.CustomerInfoResponse.Country</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Zip</th>
+                                <td>@Model.CustomerInfoResponse.Zip</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Phone</th>
+                                <td>@Model.CustomerInfoResponse.Phone</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Mobile</th>
+                                <td>@Model.CustomerInfoResponse.Mobile</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Email Confirm</th>
+                                <td>@Model.CustomerInfoResponse.EmailConfirm</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Mobile Confirm</th>
+                                <td>@Model.CustomerInfoResponse.MobileConfirm</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Country ID</th>
+                                <td>@Model.CustomerInfoResponse.CountryID</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">LID</th>
+                                <td>@Model.CustomerInfoResponse.lid</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">FTP Host</th>
+                                <td>@Model.CustomerInfoResponse.FTPHost</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">FTP Port</th>
+                                <td>@Model.CustomerInfoResponse.FTPPort</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+</div>
