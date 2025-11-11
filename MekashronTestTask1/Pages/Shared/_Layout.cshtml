@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - MekashronTestTask1</title>
     <script type="importmap"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="~/MekashronTestTask1.styles.css" asp-append-version="true" defer/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/MekashronTestTask1.styles.css" asp-append-version="true" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 </head>
 <body class="bg-body-secondary">
     <header>
@@ -25,13 +24,13 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="https://github.com/AlexandrChernyshov/MekashronTestTask1" class="nav-link text-dark d-flex align-items-center">
-                                <i class="bi bi-github" title="This code on git"></i>
+                            <a href="https://github.com/AlexandrChernyshov/MekashronTestTask1" class="nav-link text-dark d-flex align-items-center" target="_blank" rel="noopener noreferrer">
+                                This project on Github
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="https://t.me/alexCqp" class="nav-link text-dark d-flex align-items-center">
-                                <i class="bi bi-telegram" title="Creator's TG"></i>
+                            <a href="https://t.me/alexCqp" class="nav-link text-dark d-flex align-items-center" target="_blank" rel="noopener noreferrer">
+                                Telegram
                             </a>
                         </li>
                     </ul>
@@ -51,9 +50,8 @@
         </div>
     </footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js  " integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="~/js/site.min.js" asp-append-version="true" defer></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

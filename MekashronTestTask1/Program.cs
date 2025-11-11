@@ -1,7 +1,10 @@
 using IcuTech;
+using Microsoft.AspNetCore.Hosting.StaticWebAssets;
+using Microsoft.AspNetCore.ResponseCompression;
+using Microsoft.Net.Http.Headers;
 
 var builder = WebApplication.CreateBuilder(args);
-
+StaticWebAssetsLoader.UseStaticWebAssets(builder.Environment, builder.Configuration);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddSingleton<ICUTechClient>(provider =>
@@ -11,8 +14,25 @@ builder.Services.AddSingleton<ICUTechClient>(provider =>
     );
 });
 
-var app = builder.Build();
+builder.Services.AddResponseCompression(options =>
+{
+    options.EnableForHttps = true;
+    options.Providers.Add<BrotliCompressionProvider>();
+    options.Providers.Add<GzipCompressionProvider>();
+});
 
+var app = builder.Build();
+app.UseStaticFiles(new StaticFileOptions
+{
+    OnPrepareResponse = ctx =>
+    {
+        const int durationInSeconds = 60 * 60 * 24 * 30;
+        ctx.Context.Response.Headers[HeaderNames.CacheControl] =
+            "public,max-age=" + durationInSeconds;
+    }
+});
+
+app.UseResponseCompression();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
