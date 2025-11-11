@@ -24,9 +24,9 @@
 
         public string Email { get; set; } = string.Empty;
 
-        public int EmailConfirm { get; set; }
+        public bool EmailConfirm { get; set; }
 
-        public int MobileConfirm { get; set; }
+        public bool MobileConfirm { get; set; }
 
         public int CountryID { get; set; }
 

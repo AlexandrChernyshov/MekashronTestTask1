@@ -1,11 +1,11 @@
-    using IcuTech;
+using IcuTech;
 using MekashronTestTask1.Models;
 using MekashronTestTask1.Models.Requests;
-    using MekashronTestTask1.Models.Responses;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Mvc.RazorPages;
-    using Newtonsoft.Json;
-    using System.Text.Json.Serialization;
+using MekashronTestTask1.Models.Responses;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace MekashronTestTask1.Pages
 {
