@@ -38,7 +38,7 @@
                         @if (Model.ResponseStatus == Models.ResponseStatus.Error)
                         {
                             <div class="alert alert-danger mt-4">
-                                @(Model.CustomerInfoResponse?.ResultMessage)
+                                @(Model.CustomerInfoResponse?.ResultMessage ?? Model.ResultMessage)
                             </div>
                         }
                         @if (Model.ResponseStatus == Models.ResponseStatus.InternalError)

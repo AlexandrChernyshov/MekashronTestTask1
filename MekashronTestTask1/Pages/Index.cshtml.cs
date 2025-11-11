@@ -64,6 +64,7 @@ namespace MekashronTestTask1.Pages
             {
                 ResponseStatus = ResponseStatus.InternalError;
                 ResultMessage = "Internal server error. Reload the page, or try later";
+                _logger.LogError(ex, "Login error");
             }
 
             return Page();
